@@ -1,0 +1,27 @@
+  CHK     include/linux/version.h
+  CHK     include/generated/utsrelease.h
+make[1]: `include/generated/mach-types.h' is up to date.
+  CALL    scripts/checksyscalls.sh
+  CC [M]  crypto/tcrypt.o
+  CC [M]  drivers/hid/hid-logitech-dj.o
+  CC [M]  drivers/scsi/scsi_wait_scan.o
+  CC [M]  drivers/usb/gadget/ether.o
+  CC [M]  drivers/usb/gadget/file_storage.o
+  CC [M]  drivers/usb/gadget/mass_storage.o
+  LD [M]  drivers/usb/gadget/g_ether.o
+  LD [M]  drivers/usb/gadget/g_file_storage.o
+  LD [M]  drivers/usb/gadget/g_mass_storage.o
+  Building modules, stage 2.
+  MODPOST 6 modules
+  CC      crypto/tcrypt.mod.o
+  LD [M]  crypto/tcrypt.ko
+  CC      drivers/hid/hid-logitech-dj.mod.o
+  LD [M]  drivers/hid/hid-logitech-dj.ko
+  CC      drivers/scsi/scsi_wait_scan.mod.o
+  LD [M]  drivers/scsi/scsi_wait_scan.ko
+  CC      drivers/usb/gadget/g_ether.mod.o
+  LD [M]  drivers/usb/gadget/g_ether.ko
+  CC      drivers/usb/gadget/g_file_storage.mod.o
+  LD [M]  drivers/usb/gadget/g_file_storage.ko
+  CC      drivers/usb/gadget/g_mass_storage.mod.o
+  LD [M]  drivers/usb/gadget/g_mass_storage.ko
