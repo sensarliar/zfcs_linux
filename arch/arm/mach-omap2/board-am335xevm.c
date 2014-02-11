@@ -89,8 +89,10 @@
 
 static const struct display_panel disp_panel = {
 	WVGA,
-	32,
-	32,
+	//32,
+	//32,
+	16,
+	16,
 	COLOR_ACTIVE,
 };
 
@@ -122,12 +124,13 @@ static struct lcd_ctrl_config lcd_cfg = {
 	.ac_bias		= 255,
 	.ac_bias_intrpt		= 0,
 	.dma_burst_sz		= 16,
-	.bpp			= 32,
+	//.bpp			= 32,
+	.bpp			= 16,
 	.fdd			= 0x80,
 	.tft_alt_mode		= 0,
 	.stn_565_mode		= 0,
 	.mono_8bit_mode		= 0,
-	.invert_line_clock	= 0,
+	.invert_line_clock	= 1,
 	.invert_frm_clock	= 1,
 	.sync_edge		= 0,
 	.sync_ctrl		= 1,
@@ -146,10 +149,10 @@ struct da8xx_lcdc_platform_data  NHD_480272MF_ATXI_pdata = {
 	.type                   = "NHD-4.3-ATXI#-T-1",
 };
 
-struct da8xx_lcdc_platform_data HJ070NA13A_pdata = {
-       .manu_name              = "INNOLUX",
+struct da8xx_lcdc_platform_data zfcs_lcd_pdata = {
+       .manu_name              = "zfcs",
        .controller_data        = &lcd_cfg,
-       .type                   = "HJ070NA13A",
+       .type                   = "ZFCS_LCD",
 };
 
 #include "common.h"
@@ -472,14 +475,14 @@ static struct pinmux_config lcdc_pin_mux[] = {
 						       | AM33XX_PULL_DISA},
 	{"lcd_data15.lcd_data15",	OMAP_MUX_MODE0 | AM33XX_PIN_OUTPUT
 						       | AM33XX_PULL_DISA},
-	{"gpmc_ad8.lcd_data16",		OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad9.lcd_data17",		OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad10.lcd_data18",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad11.lcd_data19",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad12.lcd_data20",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad13.lcd_data21",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad14.lcd_data22",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
-	{"gpmc_ad15.lcd_data23",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad8.lcd_data16",		OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad9.lcd_data17",		OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad10.lcd_data18",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad11.lcd_data19",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad12.lcd_data20",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad13.lcd_data21",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad14.lcd_data22",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
+	//{"gpmc_ad15.lcd_data23",	OMAP_MUX_MODE1 | AM33XX_PIN_OUTPUT},
 	{"lcd_vsync.lcd_vsync",		OMAP_MUX_MODE0 | AM33XX_PIN_OUTPUT},
 	{"lcd_hsync.lcd_hsync",		OMAP_MUX_MODE0 | AM33XX_PIN_OUTPUT},
 	{"lcd_pclk.lcd_pclk",		OMAP_MUX_MODE0 | AM33XX_PIN_OUTPUT},
@@ -1152,7 +1155,8 @@ static void lcdc_init(int evm_id, int profile)
 		lcdc_pdata = &NHD_480272MF_ATXI_pdata;
 		break;
         case CHIPSEE_BBBEXP:
-                lcdc_pdata = &HJ070NA13A_pdata;
+                //lcdc_pdata = &HJ070NA13A_pdata;
+		lcdc_pdata = &zfcs_lcd_pdata;
                 break;
 	default:
 		pr_err("LCDC not supported on this evm (%d)\n",evm_id);

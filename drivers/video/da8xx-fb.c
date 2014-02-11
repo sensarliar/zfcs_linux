@@ -291,7 +291,7 @@ static struct da8xx_panel known_lcd_panels[] = {
 		.invert_pxl_clk = 0,
 	},
         /* INNOLUX HJ070NA13A*/
-        [4] = {
+        /*[4] = {
                 .name = "HJ070NA13A",
                 .width = 1024,
                 .height = 600,
@@ -300,6 +300,19 @@ static struct da8xx_panel known_lcd_panels[] = {
                 .hsw = 30,
                 .vfp = 12,
                 .vbp = 22,
+                .vsw = 2,
+                .pxl_clk = 25000000,
+                .invert_pxl_clk = 0,
+        },*/
+        [4] = {
+                .name = "ZFCS_LCD",
+                .width = 640,
+                .height = 480,
+                .hfp = 16,
+                .hbp = 48,
+                .hsw = 96,
+                .vfp = 11,
+                .vbp = 31,
                 .vsw = 2,
                 .pxl_clk = 25000000,
                 .invert_pxl_clk = 0,
