@@ -1394,7 +1394,8 @@ static struct gpmc_timings am335x_nand_timings = {
 	.wr_data_mux_bus = 0,
 };
 
-static void evm_nand_init(int evm_id, int profile)
+//static void __init evm_nand_init(void)
+static void evm_nand_init(int evm_id, int profile) //xiugai function para
 {
 	struct omap_nand_platform_data *pdata;
 	struct gpmc_devices_info gpmc_device[2] = {
@@ -1786,7 +1787,7 @@ static void chipsee_buzz_init(int evm_id, int profile)
 
 static void mmc1_init(int evm_id, int profile)
 {
-	setup_pin_mux(mmc1_common_pin_mux);
+/*	setup_pin_mux(mmc1_common_pin_mux);
 	setup_pin_mux(mmc1_dat4_7_pin_mux);
 	setup_pin_mux(mmc1_wp_only_pin_mux);
 	setup_pin_mux(mmc1_cd_only_pin_mux);
@@ -1795,7 +1796,9 @@ static void mmc1_init(int evm_id, int profile)
 	am335x_mmc[1].caps = MMC_CAP_4_BIT_DATA;
 	am335x_mmc[1].gpio_cd = GPIO_TO_PIN(2, 2);
 	am335x_mmc[1].gpio_wp = GPIO_TO_PIN(1, 29);
-	am335x_mmc[1].ocr_mask = MMC_VDD_32_33 | MMC_VDD_33_34; /* 3V3 */
+	am335x_mmc[1].ocr_mask = MMC_VDD_32_33 | MMC_VDD_33_34; 
+*/	
+	/* 3V3 */
 
 	/* mmc will be initialized when mmc0_init is called */
 	return;
@@ -2391,23 +2394,25 @@ static struct evm_dev_cfg evm_sk_dev_cfg[] = {
 
 /* Chipsee Beaglebone Black Expansion Board */
 static struct evm_dev_cfg __initdata evm_chipsee_bbbexp_dev_cfg[] = {
+		{clkout2_enable, DEV_ON_BASEBOARD, PROFILE_ALL},
         {mii1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {usb0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {usb1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {mmc0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+		{evm_nand_init, DEV_ON_BASEBOARD, PROFILE_ALL},
         {lcdc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {i2c1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {cap_tsc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {cap_tsc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {mfd_tscadc_init,       DEV_ON_BASEBOARD, PROFILE_ALL},
         {mcasp0_init,   DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_gpio_led_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_buzz_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_backlight_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_hmi_audio_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-	{d_can_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//	{d_can_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {uart1_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {uart2_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-        {uart4_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {uart4_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {NULL, 0, 0},
 };
 
@@ -2784,6 +2789,12 @@ static void __init am335x_evm_init(void)
 	am33xx_cpuidle_init();
 	am33xx_mux_init(board_mux);
 	omap_serial_init();
+/*
+	clkout2_enable(CHIPSEE_BBBEXP,PROFILE_ALL);//add nand init by gm
+	pr_warning("gaoming test1_nand\n");
+	evm_nand_init(CHIPSEE_BBBEXP,PROFILE_ALL); //add nand init by gm
+	pr_warning("gaoming test22_nand\n");
+*/
 	am335x_evm_i2c_init();
 	omap_sdrc_init(NULL, NULL);
 	usb_musb_init(&musb_board_data);
