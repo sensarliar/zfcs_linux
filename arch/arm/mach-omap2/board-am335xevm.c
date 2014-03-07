@@ -667,6 +667,7 @@ static struct pinmux_config mmc0_cd_only_pin_mux[] = {
 };
 
 /* Module pin mux for mmc1 */
+
 static struct pinmux_config mmc1_common_pin_mux[] = {
 	{"gpmc_ad3.mmc1_dat3",	OMAP_MUX_MODE1 | AM33XX_PIN_INPUT_PULLUP},
 	{"gpmc_ad2.mmc1_dat2",	OMAP_MUX_MODE1 | AM33XX_PIN_INPUT_PULLUP},
@@ -745,6 +746,7 @@ static struct pinmux_config uart4_pin_mux[] = {
 };
 
 /* pinmux for gpio based key */
+/*
 static struct pinmux_config gpio_keys_pin_mux[] = {
 	{"gpmc_wait0.gpio0_30", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
 	{"gpmc_oen_ren.gpio2_3", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
@@ -752,7 +754,7 @@ static struct pinmux_config gpio_keys_pin_mux[] = {
 	{"gpmc_ben0_cle.gpio2_5", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
 	{NULL, 0},
 };
-
+*/
 /* pinmux for led device */
 static struct pinmux_config gpio_led_mux[] = {
 	{"gpmc_ad4.gpio1_4", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
@@ -786,18 +788,20 @@ static struct pinmux_config chipsee_audio_enable_pin_mux[] = {
 };
 
 /* pinmux for buzzer */
+/*
 static struct pinmux_config chipsee_buzz_pin_mux[] = {
        {"gpmc_oen_ren.gpio2_3", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
        {NULL, 0},
 };
-
+*/
 /* pinmux for leds */
+/*
 static struct pinmux_config chipsee_gpio_led_pin_mux[] = {
        {"gpmc_ben0_cle.gpio2_5", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
        {"gpmc_wen.gpio2_4", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
        {NULL, 0},
 };
-
+*/
 /*
 * @pin_mux - single module pin-mux structure which defines pin-mux
 *			details for all its pins.
@@ -1219,7 +1223,9 @@ static void usb1_init(int evm_id, int profile)
 /* setup uart4 */
 static void uart4_init(int evm_id, int profile)
 {
+/*
 	setup_pin_mux(uart4_pin_mux);
+*/
 	return;
 }
 
@@ -1771,7 +1777,7 @@ static void chipsee_backlight_init(int evm_id, int profile)
 
 	return;
 }
-
+/*
 #define BUZZ_GPIO GPIO_TO_PIN(2, 3)
 
 static void chipsee_buzz_init(int evm_id, int profile)
@@ -1784,7 +1790,7 @@ static void chipsee_buzz_init(int evm_id, int profile)
 
 	return;
 }
-
+*/
 static void mmc1_init(int evm_id, int profile)
 {
 /*	setup_pin_mux(mmc1_common_pin_mux);
@@ -2082,12 +2088,14 @@ static struct platform_device am335x_evm_gpio_keys = {
 
 static void gpio_keys_init(int evm_id, int profile)
 {
-	int err;
+/*	int err;
 
 	setup_pin_mux(gpio_keys_pin_mux);
 	err = platform_device_register(&am335x_evm_gpio_keys);
 	if (err)
 		pr_err("failed to register gpio key device\n");
+*/		
+//del gpio for nand pin conflict
 }
 
 static struct gpio_led gpio_leds[] = {
@@ -2159,7 +2167,7 @@ static struct platform_device chipsee_leds_gpio = {
                 .platform_data  = &chipsee_gpio_led_info,
         },
 };
-
+/*
 static void chipsee_gpio_led_init(int evm_id, int profile)
 {
         int err;
@@ -2169,7 +2177,7 @@ static void chipsee_gpio_led_init(int evm_id, int profile)
         if (err)
                 pr_err("failed to register Chipsee gpio led device\n");
 }
-
+*/
 /* setup spi0 */
 static void spi0_init(int evm_id, int profile)
 {
@@ -2396,17 +2404,17 @@ static struct evm_dev_cfg evm_sk_dev_cfg[] = {
 static struct evm_dev_cfg __initdata evm_chipsee_bbbexp_dev_cfg[] = {
 		{clkout2_enable, DEV_ON_BASEBOARD, PROFILE_ALL},
         {mii1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {usb0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {usb1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {usb0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {usb1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {mmc0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
 		{evm_nand_init, DEV_ON_BASEBOARD, PROFILE_ALL},
         {lcdc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {i2c1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
 //        {cap_tsc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {mfd_tscadc_init,       DEV_ON_BASEBOARD, PROFILE_ALL},
-        {mcasp0_init,   DEV_ON_BASEBOARD, PROFILE_ALL},
-        {chipsee_gpio_led_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-        {chipsee_buzz_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {mfd_tscadc_init,       DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {mcasp0_init,   DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {chipsee_gpio_led_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {chipsee_buzz_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_backlight_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_hmi_audio_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
 //	{d_can_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
@@ -2789,12 +2797,12 @@ static void __init am335x_evm_init(void)
 	am33xx_cpuidle_init();
 	am33xx_mux_init(board_mux);
 	omap_serial_init();
-/*
-	clkout2_enable(CHIPSEE_BBBEXP,PROFILE_ALL);//add nand init by gm
+
+/*	clkout2_enable(CHIPSEE_BBBEXP,PROFILE_ALL);//add nand init by gm
 	pr_warning("gaoming test1_nand\n");
-	evm_nand_init(CHIPSEE_BBBEXP,PROFILE_ALL); //add nand init by gm
+	evm_nand_init(CHIPSEE_BBBEXP,PROFILE_ALL); //add nand init by gm */
 	pr_warning("gaoming test22_nand\n");
-*/
+
 	am335x_evm_i2c_init();
 	omap_sdrc_init(NULL, NULL);
 	usb_musb_init(&musb_board_data);

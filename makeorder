@@ -1,3 +1,19 @@
 make ARCH=arm CROSS_COMPILE=/home/gaoming/ti-sdk-am335x-evm-06.00.00.00/linux-devkit/sysroots/i686-arago-linux/usr/bin/arm-linux-gnueabihf- menuconfig
 make ARCH=arm CROSS_COMPILE=/home/gaoming/ti-sdk-am335x-evm-06.00.00.00/linux-devkit/sysroots/i686-arago-linux/usr/bin/arm-linux-gnueabihf-  uImage
+cp '/home/gaoming/beagle/chipsee/linux-3.2.0-bbb-exp/arch/arm/boot/uImage' /tftpboot/root/
 
+
+setenv serverip 192.168.1.10
+run nand_args
+setenv ipaddr 192.168.1.88
+tftpboot 0x83000000 uImage
+
+
+
+bootm 0x83000000
+
+setenv serverip 192.168.1.3
+run nand_args
+setenv ipaddr 192.168.1.88
+tftpboot ${kloadaddr} uImage
+bootm ${kloadaddr}

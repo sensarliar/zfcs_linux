@@ -2960,6 +2960,9 @@ static struct nand_flash_dev *nand_get_flash_type(struct mtd_info *mtd,
 			*maf_id, *dev_id, id_data[0], id_data[1]);
 		return ERR_PTR(-ENODEV);
 	}
+	pr_info("%s: maf_id and dev_id infomation display for gaoming test3"
+			"%02x,%02x against %02x,%02x\n", __func__,
+			*maf_id, *dev_id, id_data[0], id_data[1]);
 
 	if (!type)
 		type = nand_flash_ids;
@@ -3108,7 +3111,12 @@ ident_done:
 			   busw ? 16 : 8);
 		return ERR_PTR(-EINVAL);
 	}
-
+		pr_info("NAND device: Manufacturer ID:"
+			" 0x%02x, Chip ID: 0x%02x (%s %s)\n", *maf_id,
+			*dev_id, nand_manuf_ids[maf_idx].name, mtd->name);
+		pr_warn("NAND bus width %d instead %d bit\n",
+			   (chip->options & NAND_BUSWIDTH_16) ? 16 : 8,
+			   busw ? 16 : 8);
 	/* Calculate the address shift from the page size */
 	chip->page_shift = ffs(mtd->writesize) - 1;
 	/* Convert chipsize to number of pages per chip -1 */
@@ -3215,12 +3223,13 @@ int nand_scan_ident(struct mtd_info *mtd, int maxchips,
 		    nand_dev_id != chip->read_byte(mtd))
 			break;
 	}
-	if (i > 1)
+	if (i > 0)
 		pr_info("%d NAND chips detected\n", i);
 
 	/* Store the number of chips and calc total size for mtd */
 	chip->numchips = i;
 	mtd->size = i * chip->chipsize;
+	pr_info("the NAND chip size is %d detected--gaoming5\n", chip->chipsize);
 
 	return 0;
 }

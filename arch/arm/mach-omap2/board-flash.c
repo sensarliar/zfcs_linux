@@ -240,8 +240,10 @@ void board_flash_init(struct flash_partitions partition_info[],
 
 	if (nandcs > GPMC_CS_NUM)
 		pr_err("NAND: Unable to find configuration in GPMC\n");
-	else
+	else{
 		omap_nand_init(partition_info[2].parts,
 			partition_info[2].nr_parts, nandcs,
 			nand_type, &nand_default_timings);
+		pr_err("NAND: bad timing configuration in GPMC--gaoming4\n");
+		}
 }
