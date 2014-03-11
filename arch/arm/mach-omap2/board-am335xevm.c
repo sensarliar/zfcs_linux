@@ -2391,23 +2391,25 @@ static struct evm_dev_cfg evm_sk_dev_cfg[] = {
 
 /* Chipsee Beaglebone Black Expansion Board */
 static struct evm_dev_cfg __initdata evm_chipsee_bbbexp_dev_cfg[] = {
+		{clkout2_enable, DEV_ON_BASEBOARD, PROFILE_ALL},
         {mii1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {usb0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {usb1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+		{evm_nand_init, DEV_ON_BASEBOARD, PROFILE_ALL},
         {mmc0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {lcdc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {i2c1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {cap_tsc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {mfd_tscadc_init,       DEV_ON_BASEBOARD, PROFILE_ALL},
-        {mcasp0_init,   DEV_ON_BASEBOARD, PROFILE_ALL},
-        {chipsee_gpio_led_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-        {chipsee_buzz_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {cap_tsc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {mfd_tscadc_init,       DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {mcasp0_init,   DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {chipsee_gpio_led_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {chipsee_buzz_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_backlight_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {chipsee_hmi_audio_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-	{d_can_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//	{d_can_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {uart1_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {uart2_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-        {uart4_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {uart4_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {NULL, 0, 0},
 };
 
