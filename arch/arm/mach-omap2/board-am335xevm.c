@@ -2398,7 +2398,7 @@ static struct evm_dev_cfg __initdata evm_chipsee_bbbexp_dev_cfg[] = {
 		{evm_nand_init, DEV_ON_BASEBOARD, PROFILE_ALL},
         {mmc0_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
         {lcdc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
-        {i2c1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
+//        {i2c1_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
 //        {cap_tsc_init,     DEV_ON_BASEBOARD, PROFILE_ALL},
 //        {mfd_tscadc_init,       DEV_ON_BASEBOARD, PROFILE_ALL},
 //        {mcasp0_init,   DEV_ON_BASEBOARD, PROFILE_ALL},
@@ -2655,13 +2655,13 @@ static struct i2c_board_info __initdata am335x_i2c0_boardinfo[] = {
 	{
 		I2C_BOARD_INFO("tlc59108", 0x40),
 	},
-	{
+/*	{
 		I2C_BOARD_INFO("tps65910", TPS65910_I2C_ID1),
 		.platform_data  = &am335x_tps65910_info,
 	},
 	{
 		I2C_BOARD_INFO("tlv320aic3x", 0x1b),
-	},
+	},*/
 };
 
 static struct omap_musb_board_data musb_board_data = {
