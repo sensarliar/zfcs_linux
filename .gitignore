@@ -82,6 +82,8 @@ GRTAGS
 GSYMS
 GTAGS
 
+compile*.log
+
 *.orig
 *~
 \#*#

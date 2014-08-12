@@ -1,0 +1,54 @@
+scripts/kconfig/conf --silentoldconfig Kconfig
+  CHK     include/linux/version.h
+  CHK     include/generated/utsrelease.h
+  UPD     include/generated/utsrelease.h
+make[1]: `include/generated/mach-types.h' is up to date.
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CC      init/version.o
+  LD      init/built-in.o
+  CC      arch/arm/mach-omap2/board-omap3beagle.o
+  CC      arch/arm/mach-omap2/board-am335xevm.o
+  CC      arch/arm/mach-omap2/board-flash.o
+  LD      arch/arm/mach-omap2/built-in.o
+  CC      kernel/sys.o
+  CC      kernel/module.o
+  GZIP    kernel/config_data.gz
+  CHK     kernel/config_data.h
+  UPD     kernel/config_data.h
+  CC      kernel/configs.o
+  LD      kernel/built-in.o
+  LD      drivers/mtd/onenand/built-in.o
+  LD      drivers/mtd/built-in.o
+  LD      drivers/built-in.o
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  LD      init/built-in.o
+  LD      .tmp_vmlinux1
+  KSYM    .tmp_kallsyms1.S
+  AS      .tmp_kallsyms1.o
+  LD      .tmp_vmlinux2
+  KSYM    .tmp_kallsyms2.S
+  AS      .tmp_kallsyms2.o
+  LD      vmlinux
+  SYSMAP  System.map
+  SYSMAP  .tmp_System.map
+  OBJCOPY arch/arm/boot/Image
+  Kernel: arch/arm/boot/Image is ready
+  GZIP    arch/arm/boot/compressed/piggy.gzip
+  AS      arch/arm/boot/compressed/piggy.gzip.o
+  LD      arch/arm/boot/compressed/vmlinux
+  OBJCOPY arch/arm/boot/zImage
+  Kernel: arch/arm/boot/zImage is ready
+  UIMAGE  arch/arm/boot/uImage
+Image Name:   Linux-3.2.0-g920ea2d
+Created:      Thu Feb 27 16:10:41 2014
+Image Type:   ARM Linux Kernel Image (uncompressed)
+Data Size:    3170384 Bytes = 3096.08 kB = 3.02 MB
+Load Address: 80008000
+Entry Point:  80008000
+  Image arch/arm/boot/uImage is ready

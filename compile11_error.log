@@ -1,0 +1,6 @@
+arch/arm/mach-omap2/board-am335xevm.c:391:13: warning: ‘am335x_mac_addr’ defined but not used [-Wunused-variable]
+arch/arm/mach-omap2/board-am335xevm.c:2423:13: warning: ‘setup_general_purpose_evm’ defined but not used [-Wunused-function]
+arch/arm/mach-omap2/board-am335xevm.c:2443:13: warning: ‘setup_ind_auto_motor_ctrl_evm’ defined but not used [-Wunused-function]
+arch/arm/mach-omap2/board-am335xevm.c:2464:13: warning: ‘setup_beaglebone_old’ defined but not used [-Wunused-function]
+arch/arm/mach-omap2/board-am335xevm.c:2481:13: warning: ‘setup_beaglebone’ defined but not used [-Wunused-function]
+arch/arm/mach-omap2/board-am335xevm.c:2497:13: warning: ‘setup_starterkit’ defined but not used [-Wunused-function]
