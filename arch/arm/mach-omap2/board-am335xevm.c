@@ -739,11 +739,17 @@ static struct pinmux_config uart2_pin_mux[] = {
 
 /* Module pin mux for uart4 */
 static struct pinmux_config uart4_pin_mux[] = {
+        {"uart0_ctsn.uart4_rxd", OMAP_MUX_MODE1 | AM33XX_PIN_INPUT_PULLUP},
+        {"uart0_rtsn.uart4_txd", OMAP_MUX_MODE1 | AM33XX_PULL_ENBL},
+        {NULL, 0},
+};
+/*
+static struct pinmux_config uart4_pin_mux[] = {
         {"gpmc_wait0.uart4_rxd", OMAP_MUX_MODE6 | AM33XX_PIN_INPUT_PULLUP},
         {"gpmc_wpn.uart4_txd", OMAP_MUX_MODE6 | AM33XX_PULL_ENBL},
         {NULL, 0},
 };
-
+*/
 /* pinmux for gpio based key */
 static struct pinmux_config gpio_keys_pin_mux[] = {
 	{"gpmc_wait0.gpio0_30", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT},
@@ -2409,7 +2415,7 @@ static struct evm_dev_cfg __initdata evm_chipsee_bbbexp_dev_cfg[] = {
 //	{d_can_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {uart1_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {uart2_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
-//        {uart4_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
+        {uart4_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
         {NULL, 0, 0},
 };
 
