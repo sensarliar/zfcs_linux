@@ -154,6 +154,7 @@ static int davinci_mdio_reset(struct mii_bus *bus)
 	} else {
 		/* desperately scan all phys */
 		dev_warn(data->dev, "no live phy, scanning all\n");
+		dev_info(data->dev, "$GAOMING detected phy mask %x\n", ~phy_mask);
 		phy_mask = 0;
 	}
 	data->bus->phy_mask = phy_mask;
@@ -244,6 +245,8 @@ static int davinci_mdio_read(struct mii_bus *bus, int phy_id, int phy_reg)
 			break;
 
 		reg = __raw_readl(&data->regs->user[0].access);
+		pr_err("$gaoming test read_user_access,,value is %x \n", reg);
+		pr_err("$gaoming test read_user_access,,value is %d \n", reg);
 		ret = (reg & USERACCESS_ACK) ? (reg & USERACCESS_DATA) : -EIO;
 		break;
 	}

@@ -215,6 +215,8 @@ int get_phy_id(struct mii_bus *bus, int addr, u32 *phy_id)
 	 * in the upper half */
 	phy_reg = mdiobus_read(bus, addr, MII_PHYSID1);
 
+	pr_err("$gaoming read MII_PHYSID1,value is %d \n", phy_reg);
+	pr_err("$gaoming read MII_PHYSID1,value is %x \n", phy_reg);
 	if (phy_reg < 0)
 		return -EIO;
 
@@ -223,6 +225,7 @@ int get_phy_id(struct mii_bus *bus, int addr, u32 *phy_id)
 	/* Grab the bits from PHYIR2, and put them in the lower half */
 	phy_reg = mdiobus_read(bus, addr, MII_PHYSID2);
 
+	pr_err("$gaoming read MII_PHYSID2,if <0,is not ok,value is %d \n", phy_reg);
 	if (phy_reg < 0)
 		return -EIO;
 

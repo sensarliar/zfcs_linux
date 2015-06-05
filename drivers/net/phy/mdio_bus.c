@@ -112,7 +112,7 @@ int mdiobus_register(struct mii_bus *bus)
 	if (bus->reset)
 		bus->reset(bus);
 
-	for (i = 0; i < PHY_MAX_ADDR; i++) {
+	for (i = 2; i < PHY_MAX_ADDR; i++) {
 		if ((bus->phy_mask & (1 << i)) == 0) {
 			struct phy_device *phydev;
 
