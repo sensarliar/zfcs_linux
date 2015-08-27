@@ -213,10 +213,18 @@ int get_phy_id(struct mii_bus *bus, int addr, u32 *phy_id)
 
 	/* Grab the bits from PHYIR1, and put them
 	 * in the upper half */
-	phy_reg = mdiobus_read(bus, addr, MII_PHYSID1);
+	//phy_reg = mdiobus_read(bus, addr, MII_PHYSID1);
+	phy_reg = mdiobus_read(bus, addr, 18);
 
 	pr_err("$gaoming read MII_PHYSID1,value is %d \n", phy_reg);
 	pr_err("$gaoming read MII_PHYSID1,value is %x \n", phy_reg);
+	udelay(1000);
+
+	phy_reg = mdiobus_read(bus, addr, MII_PHYSID2);
+
+	pr_err("$gaoming read MII_PHYSID1,value is %d \n", phy_reg);
+	pr_err("$gaoming read MII_PHYSID1,value is %x \n", phy_reg);
+
 	if (phy_reg < 0)
 		return -EIO;
 

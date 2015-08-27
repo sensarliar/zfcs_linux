@@ -112,13 +112,15 @@ int mdiobus_register(struct mii_bus *bus)
 	if (bus->reset)
 		bus->reset(bus);
 
-	for (i = 2; i < PHY_MAX_ADDR; i++) {
+	for (i = 0; i < PHY_MAX_ADDR; i++) {
 		if ((bus->phy_mask & (1 << i)) == 0) {
 			struct phy_device *phydev;
 
 			phydev = mdiobus_scan(bus, i);
 			if (IS_ERR(phydev)) {
 				err = PTR_ERR(phydev);
+				udelay(1000);
+				continue;
 				goto error;
 			}
 		}
